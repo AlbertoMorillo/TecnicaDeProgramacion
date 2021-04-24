@@ -13,7 +13,7 @@ def MateriaHome():
             print("4 ##### Eliminar materias ####")
             print("5 ##### Salir ####")
             print("#######################")
-            opcion = int(input("Selecciona una opcion"))
+            opcion = int(input("Selecciona una opcion: "))
     
             if opcion < 1 or opcion > 5:
                 print("Opcion incorrecta, ingrese nuevamente.")
@@ -32,13 +32,13 @@ def ejecutarOpcion(opcion):
         try:
             materia = dao.listarMaterias()
             if len(materia) > 0:
-                funciones.listarMaterias(materia)
+                funcionesMateria.listarMaterias(materia)
             else:
                 print("No se encuentran cursos")
         except:
             print("Ocurrio un error.")
     elif opcion == 2:
-        materia = funciones.pedirDatosRegistro()
+        materia = funcionesMateria.pedirDatosRegistro()
         try:
             dao.registrarMateria(materia)
         except:
@@ -46,7 +46,7 @@ def ejecutarOpcion(opcion):
     elif opcion == 3:
         materia = dao.listarMaterias()
         if len(materia) > 0:
-            curso = funciones.pedirDatosActualizacion(materia)
+            curso = funcionesMateria.pedirDatosActualizacion(materia)
             if curso:
                 dao.actualizarMateria(curso)
             else:
@@ -55,7 +55,7 @@ def ejecutarOpcion(opcion):
         try:
             materia = dao.listarMaterias()
             if len(materia) > 0:
-                codigoEleminar = funciones.pedirDatosEliminacion(materia)
+                codigoEleminar = funcionesMateria.pedirDatosEliminacion(materia)
                 if not(codigoEleminar == ""):
                     dao.eliminarMateria(codigoEleminar)
                 else:

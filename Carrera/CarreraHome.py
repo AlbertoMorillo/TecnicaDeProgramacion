@@ -13,7 +13,7 @@ def CarreraHome():
             print("4 ##### Eliminar carreras ####")
             print("5 ##### Salir ####")
             print("#######################")
-            opcion = int(input("Selecciona una opcion"))
+            opcion = int(input("Selecciona una opcion: "))
     
             if opcion < 1 or opcion > 5:
                 print("Opcion incorrecta, ingrese nuevamente.")
@@ -32,13 +32,13 @@ def ejecutarOpcion(opcion):
         try:
             carrera = dao.listarCarreras()
             if len(carrera) > 0:
-                funciones.listarCaterias(carrera)
+                funcionesCarrera.listarCarerras(carrera)
             else:
-                print("No se encuentran cursos")
+                print("No se encuentran materias")
         except:
             print("Ocurrio un error.")
     elif opcion == 2:
-        carrera = funciones.pedirDatosRegistro()
+        carrera = funcionesCarrera.pedirDatosRegistro()
         try:
             dao.registrarCarrera(carrera)
         except:
@@ -46,16 +46,16 @@ def ejecutarOpcion(opcion):
     elif opcion == 3:
         carrera = dao.listarCarreras()
         if len(carrera) > 0:
-            curso = funciones.pedirDatosActualizacion(carrera)
-            if curso:
-                dao.actualizarCarrera(curso)
+            carr = funcionesCarrera.pedirDatosActualizacion(carrera)
+            if carr:
+                dao.actualizarCarrera(carr)
             else:
                 print("Codigo de carrera no encontrado.")
     elif opcion == 4:
         try:
             carrera = dao.listarCarreras()
             if len(carrera) > 0:
-                codigoEleminar = funciones.pedirDatosEliminacion(carrera)
+                codigoEleminar = funcionesCarrera.pedirDatosEliminacion(carrera)
                 if not(codigoEleminar == ""):
                     dao.eliminarCarrera(codigoEleminar)
                 else:
