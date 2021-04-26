@@ -1,7 +1,7 @@
 import mysql.connector
 from mysql.connector import Error
 
-class CarreraDAO():
+class ProfesorDAO():
     def __init__(self):
         try:
             self.conexion = mysql.connector.connect(
@@ -14,47 +14,47 @@ class CarreraDAO():
         except Error as ex:
             print("Error al internar la conexion {0}".format(e))
     
-    def listarCarreras(self):
+    def listarProfesors(self):
         if self.conexion.is_connected():
             try:
                 cursor = self.conexion.cursor()
-                cursor.execute("SELECT * FROM carrera ORDER BY nombre ASC")
+                cursor.execute("SELECT * FROM profesor ORDER BY nombre ASC")
                 resultados = cursor.fetchall()
                 return resultados
             except Error as ex:
                 print("Error al intentar la conexion: {0}".format(ex))
 
     
-    def registrarCarrera(self, carrera):
+    def registrarProfesor(self, profesor):
         if self.conexion.is_connected:
             try:
                 cursor = self.conexion.cursor()
-                sql = "INSERT INTO carrera (nombre) VALUES ('{0}')"
-                cursor.execute(sql.format(carrera))
+                sql = "INSERT INTO profesor (nombre) VALUES ('{0}')"
+                cursor.execute(sql.format(profesor))
                 self.conexion.commit()
-                print("Carrera registrada.\n")
+                print("Profesor registrada.\n")
             except Error as ex:
                 print("Error al intentar la conexion: {0}".format(ex))
             
 
-    def eliminarCarrera(self, codigoEliminar):
+    def eliminarProfesor(self, codigoEliminar):
         if self.conexion.is_connected():
             try:
                 cursor = self.conexion.cursor()
-                sql = "DELETE FROM carrera WHERE nombre = '{0}'"
+                sql = "DELETE FROM profesor WHERE nombre = '{0}'"
                 cursor.execute(sql.format(codigoEliminar))
                 self.conexion.commit()
-                print("Curso eliminado.\n")
+                print("Profesor eliminado.\n")
             except Error as ex:
                 print("Error al intentar conectar {0}.".format(ex))
 
-    def actualizarCarrera(self, carrera):
+    def actualizarProfesor(self, profesor):
         if self.conexion.is_connected():
             try:
                 cursor = self.conexion.cursor()
-                sql = "UPDATE carrera SET nombre = '{0}' WHERE nombre = '{1}'"
-                cursor.execute(sql.format(carrera[1], carrera[0]))
+                sql = "UPDATE profesor SET nombre = '{0}' WHERE nombre = '{1}'"
+                cursor.execute(sql.format(profesor[1], profesor[0]))
                 self.conexion.commit()
-                print("Curso actualizado.\n")
+                print("Profesor actualizado.\n")
             except Error as ex:
                 print("Error al intentar conectar {0}.".format(ex))

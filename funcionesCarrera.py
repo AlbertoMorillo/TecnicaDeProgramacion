@@ -16,7 +16,7 @@ def pedirDatosRegistro():
 def pedirDatosEliminacion(carerra):
     listarCarerras(carerra)
     existeCodigo = False
-    codigoEleminar = input("Nombre de la carrera a eliminar.")
+    codigoEleminar = input("Nombre de la carrera a eliminar: ")
     for cur in carerra:
         if cur[1] == codigoEleminar:
             existeCodigo = True
@@ -31,7 +31,7 @@ def pedirDatosActualizacion(carerra):
     listarCarerras(carerra)
 
     existeCodigo = False
-    codigoEleminar = input("nombre de la materia a editar.")
+    codigoEleminar = input("Nombre de la materia a editar: ")
     for cur in carerra:
         if cur[1] == codigoEleminar:
             existeCodigo = True
