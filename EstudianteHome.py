@@ -13,7 +13,7 @@ def EstudianteHome():
             print("2 ##### Registrar estudiantes ####")
             print("3 ##### Actualizar estudiantes ####")
             print("4 ##### Eliminar estudiantes ####")
-            print("5 ##### Salir ####")
+            print("5 ##### Volver ####")
             print("#######################")
             opcion = int(input("Selecciona una opcion: "))
     
@@ -21,7 +21,6 @@ def EstudianteHome():
                 print("Opcion incorrecta, ingrese nuevamente.")
             elif opcion == 5:
                 continuar = False
-                print("\nNos vemos pronto!\n")
                 break
             else:
                 opcionCorrecta = True
@@ -78,6 +77,5 @@ def ejecutarOpcion(opcion):
         print("Opcion no valida.")
 
 
-EstudianteHome()
 
     

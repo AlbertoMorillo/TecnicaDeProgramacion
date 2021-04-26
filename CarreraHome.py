@@ -1,7 +1,7 @@
 from conexionCarrera import CarreraDAO
 import funcionesCarrera
 
-def CarreraHome():
+def CarrHome():
     continuar = True
     while(continuar):
         opcionCorrecta = False
@@ -19,7 +19,6 @@ def CarreraHome():
                 print("Opcion incorrecta, ingrese nuevamente.")
             elif opcion == 5:
                 continuar = False
-                print("\nNos vemos pronto!\n")
                 break
             else:
                 opcionCorrecta = True
@@ -66,9 +65,4 @@ def ejecutarOpcion(opcion):
             print("Ocurrio un error.")
 
     else:
-        print("Opcion no valida.")
-
-
-CarreraHome()
-
-    
+        print("Opcion no valida.")    

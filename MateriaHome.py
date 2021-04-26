@@ -19,7 +19,6 @@ def MateriaHome():
                 print("Opcion incorrecta, ingrese nuevamente.")
             elif opcion == 5:
                 continuar = False
-                print("\nNos vemos pronto!\n")
                 break
             else:
                 opcionCorrecta = True
@@ -69,6 +68,5 @@ def ejecutarOpcion(opcion):
         print("Opcion no valida.")
 
 
-MateriaHome()
 
     
