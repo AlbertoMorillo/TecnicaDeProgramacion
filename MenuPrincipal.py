@@ -5,10 +5,11 @@ from MateriaHome import MateriaHome
 from PensumHome import PensumHome
 from EstudianteHome import EstudianteHome
 from ProfesorHome import ProfesorHome
+import mysql.connector
+from mysql.connector import Error
 
 class MenuPrincipal:
-    @staticmethod
-    def Menu():
+    def Menu(self):
         opcionCorrecta = False
         while(not opcionCorrecta):
             print("\n################## Menu principal ###################")
@@ -33,8 +34,7 @@ class MenuPrincipal:
                 opcionCorrecta = True
                 MenuPrincipal().ejecutarOpcion(opcion)
 
-    @staticmethod
-    def ejecutarOpcion(opcion):
+    def ejecutarOpcion(self,opcion):
         if opcion == 1:
             CarrHome()
         elif opcion == 2:
@@ -50,5 +50,41 @@ class MenuPrincipal:
         elif opcion == 7:
             MateriaHome()
 
+    def login(self):
+        try:
+            self.conexion = mysql.connector.connect(
+                host= 'localhost',
+                port = 3306,
+                user = 'root',
+                password = '',
+                db = 'universidad'
+            )
+        except Error as ex:
+            print("Error al internar la conexion {0}".format(e))
+        
+        user = input("Ingrese el usuario: ")
+        passw = input("Ingrese el password: ")
 
-MenuPrincipal().Menu()
+        if self.conexion.is_connected():
+            try:
+                cursor = self.conexion.cursor()
+                sql = "SELECT * FROM credenciales WHERE usuario = '{0}' AND password = '{1}'"
+                cursor.execute(sql.format(user,passw))
+                resultados = cursor.fetchall()
+                if resultados:
+                    return True
+                else:
+                    return False
+            except Error as ex:
+                print("Error al intentar la conexion: {0}".format(ex))
+            return False
+
+    def main(self):
+        log = MenuPrincipal().login()
+        if log == True:
+            MenuPrincipal().Menu()
+        else:
+            print("Usuario o contraseña invalida.")
+
+
+MenuPrincipal().main()
